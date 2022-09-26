@@ -9,10 +9,13 @@ Purpose: definitions for algorithms used throughout this program. Algorithm desc
 
 using namespace std;
 
-void insertion_sort(vector<int> & v) {
+void insertion_sort(vector<int> & arr) {
 	unsigned int i = 1; // start at the 2nd element in the array, the first insertion is already sorted
-	while (i < v.size()) { 
+    int v[10];
+	while (i < arr.size()) {
 		unsigned int j = i; // insert the next element into the end of the array
+        v[i] = j;
+        i++;
 		while ((j > 0) && (v[j] < v[j - 1])) { // shift left if needed
 			int temp = v[j - 1];
 			v[j - 1] = v[j];
@@ -30,9 +33,9 @@ bool binary_search_helper(const vector<int> & v, int value, unsigned int start, 
 	if (start >= end) { // make sure we are still in bounds
 		return false;
 	}
-	unsigned int middle_index = (start + end);
+	unsigned int middle_index = (start + end)/2;
 	int middle_value = v[middle_index];
-	if (middle_value = value) { // check the midpoint for value
+	if (middle_value == value) { // check the midpoint for value
 		return true;
 	}
 	else if (value < middle_value) { // search the lower half
